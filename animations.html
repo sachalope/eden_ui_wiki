@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations - EDEN UI EDITOR</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="EDEN UI Logo" class="logo-image">
+            <h1>EDEN UI</h1>
+            <p>Editor Documentation</p>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="animations.html" class="active">Animations</a></li>
+            <li><a href="composants.html">Composants</a></li>
+            <li><a href="proprietes.html">Propriétés</a></li>
+            <li><a href="editeur.html">Éditeur</a></li>
+            <li><a href="actions.html">Actions</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <header>
+            <h1>🎬 Système d'Animations</h1>
+            <p class="subtitle">Guide complet des animations EDEN UI EDITOR</p>
+        </header>
+
+        <!-- Presets d'Animation -->
+        <section class="card">
+            <h2>📋 Presets d'Animation</h2>
+            <p>Les presets permettent de configurer rapidement des animations courantes :</p>
+
+            <div class="preset-grid">
+                <div class="preset-item">
+                    <h3>1. Fade In</h3>
+                    <div class="preset-details">
+                        <span class="badge badge-type">Fade (Alpha)</span>
+                        <span class="badge badge-trigger">OnShow</span>
+                    </div>
+                    <p><strong>Effet :</strong> L'élément apparaît progressivement (alpha 0 → 255)</p>
+                    <ul>
+                        <li><strong>Durée :</strong> 0.25s</li>
+                        <li><strong>Easing :</strong> OutQuad</li>
+                    </ul>
+                </div>
+
+                <div class="preset-item">
+                    <h3>2. Fade Out</h3>
+                    <div class="preset-details">
+                        <span class="badge badge-type">Fade</span>
+                        <span class="badge badge-trigger">OnShow</span>
+                    </div>
+                    <p><strong>Effet :</strong> L'élément disparaît progressivement (alpha 255 → 0)</p>
+                    <ul>
+                        <li><strong>Durée :</strong> 0.25s</li>
+                        <li><strong>Easing :</strong> InQuad</li>
+                    </ul>
+                </div>
+
+                <div class="preset-item">
+                    <h3>3. Scale Pop</h3>
+                    <div class="preset-details">
+                        <span class="badge badge-type">Scale</span>
+                        <span class="badge badge-trigger">OnShow</span>
+                    </div>
+                    <p><strong>Effet :</strong> L'élément "pop" en agrandissant (0.85 → 1.0)</p>
+                    <ul>
+                        <li><strong>Durée :</strong> 0.2s</li>
+                        <li><strong>Easing :</strong> OutQuad</li>
+                    </ul>
+                </div>
+
+                <div class="preset-item">
+                    <h3>4. Slide Up</h3>
+                    <div class="preset-details">
+                        <span class="badge badge-type">Move</span>
+                        <span class="badge badge-trigger">OnShow</span>
+                    </div>
+                    <p><strong>Effet :</strong> L'élément glisse vers le haut (Y: +20px → 0px)</p>
+                    <ul>
+                        <li><strong>Durée :</strong> 0.25s</li>
+                        <li><strong>Easing :</strong> OutQuad</li>
+                    </ul>
+                </div>
+
+                <div class="preset-item">
+                    <h3>5. Hover Pulse</h3>
+                    <div class="preset-details">
+                        <span class="badge badge-type">Scale</span>
+                        <span class="badge badge-trigger">OnHover</span>
+                    </div>
+                    <p><strong>Effet :</strong> Agrandissement léger en boucle (1.0 → 1.05)</p>
+                    <ul>
+                        <li><strong>Durée :</strong> 0.12s</li>
+                        <li><strong>Loop :</strong> Oui (ping-pong)</li>
+                    </ul>
+                </div>
+
+                <div class="preset-item">
+                    <h3>6. Color Pulse</h3>
+                    <div class="preset-details">
+                        <span class="badge badge-type">Color Pulse</span>
+                        <span class="badge badge-trigger">Loop</span>
+                    </div>
+                    <p><strong>Effet :</strong> Pulsation de couleur (couleur base ↔ couleur éclaircie)</p>
+                    <ul>
+                        <li><strong>Durée :</strong> 0.6s</li>
+                        <li><strong>Loop :</strong> Oui</li>
+                    </ul>
+                </div>
+
+                <div class="preset-item">
+                    <h3>7. Rotate</h3>
+                    <div class="preset-details">
+                        <span class="badge badge-type">Rotate</span>
+                        <span class="badge badge-trigger">Loop</span>
+                    </div>
+                    <p><strong>Effet :</strong> Rotation continue (-5° ↔ +5°)</p>
+                    <ul>
+                        <li><strong>Durée :</strong> 1.2s</li>
+                        <li><strong>Loop :</strong> Oui</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Types d'Animation -->
+        <section class="card">
+            <h2>⚙️ Types d'Animation</h2>
+
+            <div class="type-item">
+                <h3>Fade (Alpha)</h3>
+                <p>Contrôle l'opacité de l'élément</p>
+                <ul>
+                    <li><strong>Paramètres :</strong> fromAlpha (0-255), toAlpha (0-255)</li>
+                    <li><strong>Mode :</strong> S'applique par remplacement (overwrite)</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Move (Déplacement)</h3>
+                <p>Déplace l'élément relativement à sa position</p>
+                <ul>
+                    <li><strong>Paramètres :</strong> fromX, fromY, toX, toY (en pixels)</li>
+                    <li><strong>Mode :</strong> S'applique par addition (additive)</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Scale (Échelle)</h3>
+                <p>Change la taille de l'élément</p>
+                <ul>
+                    <li><strong>Paramètres :</strong> fromScale, toScale (multiplicateurs, ex: 0.5 = 50%, 2 = 200%)</li>
+                    <li><strong>Mode :</strong> S'applique par multiplication (additive)</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Rotate (Rotation)</h3>
+                <p>Fait tourner l'élément</p>
+                <ul>
+                    <li><strong>Paramètres :</strong> fromRot, toRot (en degrés)</li>
+                    <li><strong>Mode :</strong> S'applique par addition (additive)</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Color Pulse</h3>
+                <p>Change la couleur (teinte + luminosité)</p>
+                <ul>
+                    <li><strong>Paramètres :</strong> fromColor, toColor (Color picker RGB + Alpha)</li>
+                    <li><strong>Mode :</strong> S'applique par remplacement (overwrite)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Triggers -->
+        <section class="card">
+            <h2>🎯 Triggers (Déclencheurs)</h2>
+
+            <div class="trigger-item">
+                <h3>OnShow</h3>
+                <p>L'animation se joue une seule fois au démarrage</p>
+                <ul>
+                    <li>Commence dès que l'élément apparaît</li>
+                    <li><strong>Idéal pour :</strong> entrées, transitions d'apparition</li>
+                </ul>
+            </div>
+
+            <div class="trigger-item">
+                <h3>OnHover</h3>
+                <p>L'animation se joue au survol de la souris</p>
+                <ul>
+                    <li>Si Loop est activé : ping-pong continu pendant le survol</li>
+                    <li>Si Loop est désactivé : transition douce (aller-retour)</li>
+                    <li><strong>Idéal pour :</strong> effets de boutons, feedbacks interactifs</li>
+                </ul>
+            </div>
+
+            <div class="trigger-item">
+                <h3>OnClick</h3>
+                <p>L'animation se joue au clic</p>
+                <ul>
+                    <li>Peut se répéter si Loop est activé</li>
+                    <li><strong>Idéal pour :</strong> confirmations visuelles, animations de pression</li>
+                </ul>
+            </div>
+
+            <div class="trigger-item">
+                <h3>Loop</h3>
+                <p>L'animation se joue en continu sans interruption</p>
+                <ul>
+                    <li>Mode ping-pong automatique (aller-retour)</li>
+                    <li><strong>Idéal pour :</strong> effets de pulsation, rotations, indicateurs</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Paramètres de Timing -->
+        <section class="card">
+            <h2>🕐 Paramètres de Timing</h2>
+
+            <div class="timing-item">
+                <h3>Duration (Durée)</h3>
+                <ul>
+                    <li>Temps en secondes (ex: 0.25, 1.5)</li>
+                    <li>Définit la vitesse de l'animation</li>
+                </ul>
+            </div>
+
+            <div class="timing-item">
+                <h3>Delay (Délai)</h3>
+                <ul>
+                    <li>Temps d'attente avant le début (en secondes)</li>
+                    <li>Permet d'échelonner plusieurs animations</li>
+                </ul>
+            </div>
+
+            <div class="timing-item">
+                <h3>Loop (Boucle)</h3>
+                <ul>
+                    <li>✅ Activé : Animation en ping-pong continu</li>
+                    <li>❌ Désactivé : Animation unique (ou contrôlée par trigger)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Easing -->
+        <section class="card">
+            <h2>📐 Easing (Courbes d'Accélération)</h2>
+
+            <div class="easing-grid">
+                <div class="easing-item">
+                    <h3>Linear</h3>
+                    <p>Vitesse constante du début à la fin</p>
+                    <p class="detail">Aspect mécanique, uniforme</p>
+                </div>
+
+                <div class="easing-item">
+                    <h3>InQuad</h3>
+                    <p>Accélération progressive</p>
+                    <p class="detail">Démarre lent, termine rapide</p>
+                    <p class="usage"><strong>Bon pour :</strong> disparitions, sorties</p>
+                </div>
+
+                <div class="easing-item highlight">
+                    <h3>OutQuad ⭐</h3>
+                    <p>Décélération progressive (par défaut)</p>
+                    <p class="detail">Démarre rapide, termine en douceur</p>
+                    <p class="usage"><strong>Bon pour :</strong> apparitions, entrées (le plus naturel)</p>
+                </div>
+
+                <div class="easing-item">
+                    <h3>InOutQuad</h3>
+                    <p>Accélération puis décélération</p>
+                    <p class="detail">Démarre lent, accélère au milieu, ralentit à la fin</p>
+                    <p class="usage"><strong>Bon pour :</strong> mouvements fluides, transitions longues</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Composition d'Animations -->
+        <section class="card">
+            <h2>🎨 Composition d'Animations</h2>
+            <p>Tu peux combiner plusieurs animations sur un même élément :</p>
+
+            <div class="composition-section">
+                <h3>Animations Additives (s'additionnent)</h3>
+                <ul>
+                    <li><strong>Move :</strong> Les offsets X/Y s'additionnent</li>
+                    <li><strong>Scale :</strong> Les échelles se multiplient</li>
+                    <li><strong>Rotate :</strong> Les rotations s'additionnent</li>
+                </ul>
+                <div class="example">
+                    <strong>Exemple :</strong> Move (-100Y → 0Y) + Scale (0.8 → 1.0) = L'élément glisse ET grandit en même temps
+                </div>
+            </div>
+
+            <div class="composition-section">
+                <h3>Animations Overwrite (se remplacent)</h3>
+                <ul>
+                    <li><strong>Fade :</strong> Seule la dernière contrôle l'alpha</li>
+                    <li><strong>Color Pulse :</strong> Seule la dernière contrôle la couleur</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Propagation Parent → Enfants -->
+        <section class="card">
+            <h2>👨‍👩‍👧 Propagation Parent → Enfants</h2>
+            <p>Les animations du parent se propagent automatiquement aux enfants :</p>
+
+            <ul>
+                <li>Move, Scale, Rotate, Alpha du parent affectent visuellement les enfants</li>
+                <li>Les enfants peuvent avoir leurs propres animations en plus</li>
+                <li>Les transformations se multiplient (parent 50% alpha × enfant 50% alpha = 25% final)</li>
+            </ul>
+
+            <div class="example">
+                <strong>Exemple :</strong> Parent avec Fade In → Tous les enfants apparaissent progressivement avec lui
+            </div>
+        </section>
+
+        <footer>
+            <p>EDEN UI EDITOR Documentation - 2026</p>
+        </footer>
+    </main>
+</body>
+</html>

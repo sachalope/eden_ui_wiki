@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éditeur - EDEN UI EDITOR</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="EDEN UI Logo" class="logo-image">
+            <h1>EDEN UI</h1>
+            <p>Editor Documentation</p>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="animations.html">Animations</a></li>
+            <li><a href="composants.html">Composants</a></li>
+            <li><a href="proprietes.html">Propriétés</a></li>
+            <li><a href="editeur.html" class="active">Éditeur</a></li>
+            <li><a href="actions.html">Actions</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <header>
+            <h1>✏️ Éditeur EDEN UI</h1>
+            <p class="subtitle">Guide complet de l'interface et des raccourcis</p>
+        </header>
+
+        <!-- Interface -->
+        <section class="card">
+            <h2>🖥️ Interface de l'éditeur</h2>
+
+            <div class="type-item">
+                <h3>Zones principales</h3>
+                <ul>
+                    <li><strong>Panneau gauche :</strong>
+                        <ul>
+                            <li><strong>Outliner (Hiérarchie) :</strong> Arbre de tous les éléments avec leurs relations parent-enfant</li>
+                            <li><strong>Boutons d'ajout :</strong> Frame, Sprite, Button, Text</li>
+                        </ul>
+                    </li>
+                    <li><strong>Centre (Canvas) :</strong>
+                        <ul>
+                            <li>Aperçu visuel en temps réel de votre UI</li>
+                            <li>Interaction directe avec les éléments (sélection, déplacement, redimensionnement)</li>
+                            <li>Fond personnalisable avec zoom et pan</li>
+                        </ul>
+                    </li>
+                    <li><strong>Panneau droit :</strong>
+                        <ul>
+                            <li><strong>Propriétés :</strong> Configuration détaillée de l'élément sélectionné</li>
+                            <li><strong>Quick Edit :</strong> Accès rapide aux propriétés courantes</li>
+                            <li><strong>Gestion de pages :</strong> Système multi-pages</li>
+                            <li><strong>Export/Save :</strong> Sauvegarde et export du projet</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Barre supérieure</h3>
+                <ul>
+                    <li><strong>Nom du projet :</strong> Affichage et modification</li>
+                    <li><strong>Zoom :</strong> Indicateur du niveau de zoom (ex: 100%)</li>
+                    <li><strong>Fond du canvas :</strong> Choix de la couleur d'arrière-plan</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sélection -->
+        <section class="card">
+            <h2>🎯 Sélection d'éléments</h2>
+
+            <div class="preset-grid">
+                <div class="preset-item">
+                    <h3>Sélection simple</h3>
+                    <p><strong>Clic gauche</strong> sur un élément</p>
+                    <p class="detail">Remplace la sélection actuelle</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>Multi-sélection</h3>
+                    <p><strong>Ctrl + Clic</strong> sur plusieurs éléments</p>
+                    <p class="detail">Ajoute/retire l'élément de la sélection</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>Via l'Outliner</h3>
+                    <p><strong>Clic</strong> sur une ligne de l'arborescence</p>
+                    <p class="detail">Sélectionne l'élément correspondant</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>Désélectionner tout</h3>
+                    <p><strong>Touche Q</strong> ou clic sur zone vide</p>
+                    <p class="detail">Efface toute sélection</p>
+                </div>
+            </div>
+
+            <div class="example">
+                <strong>Astuce :</strong> La multi-sélection permet d'effectuer des opérations groupées (déplacement, suppression, duplication) sur plusieurs éléments simultanément.
+            </div>
+        </section>
+
+        <!-- Raccourcis clavier -->
+        <section class="card">
+            <h2>⌨️ Raccourcis clavier</h2>
+
+            <div class="composition-section">
+                <h3>🔧 Édition</h3>
+                <ul>
+                    <li><strong>Ctrl + Z :</strong> Annuler (Undo)</li>
+                    <li><strong>Ctrl + D :</strong> Dupliquer la sélection</li>
+                    <li><strong>Delete :</strong> Supprimer la sélection</li>
+                    <li><strong>Q :</strong> Désélectionner tout</li>
+                    <li><strong>Ctrl + Clic :</strong> Multi-sélection (ajouter/retirer)</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>↔️ Déplacement</h3>
+                <ul>
+                    <li><strong>Flèches (↑↓←→) :</strong> Déplacer de 1 pixel</li>
+                    <li><strong>Shift + Flèches :</strong> Déplacer de 10 pixels</li>
+                    <li><strong>Shift (pendant drag) :</strong> Contraindre à un axe (horizontal/vertical uniquement)</li>
+                    <li><strong>Alt (pendant resize) :</strong> Redimensionner depuis le centre</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>🔍 Navigation</h3>
+                <ul>
+                    <li><strong>Molette de souris :</strong> Zoom in/out</li>
+                    <li><strong>Clic molette + Drag :</strong> Pan (déplacer la vue)</li>
+                    <li><strong>ESC :</strong> Fermer l'éditeur</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Pro tip :</strong> Combinez Shift + Flèches pour positionner rapidement des éléments avec précision.
+            </div>
+        </section>
+
+        <!-- Gizmos -->
+        <section class="card">
+            <h2>🔷 Gizmos de transformation</h2>
+
+            <div class="type-item">
+                <h3>Déplacement (Move)</h3>
+                <p>Cliquez et glissez n'importe où sur l'élément sélectionné pour le déplacer.</p>
+                <ul>
+                    <li><strong>Drag normal :</strong> Déplacement libre</li>
+                    <li><strong>Shift + Drag :</strong> Contraint au mouvement horizontal OU vertical (l'axe dominant)</li>
+                    <li><strong>Multi-sélection :</strong> Déplace tous les éléments sélectionnés ensemble</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Redimensionnement (Resize)</h3>
+                <p>Poignées carrées apparaissant autour de l'élément sélectionné.</p>
+                <ul>
+                    <li><strong>8 poignées :</strong>
+                        <ul>
+                            <li><strong>Coins :</strong> TopLeft, TopRight, BottomLeft, BottomRight (redimensionnement diagonal)</li>
+                            <li><strong>Bords :</strong> Top, Bottom, Left, Right (redimensionnement sur un axe)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Alt + Resize :</strong> Redimensionne depuis le centre (maintient le centre fixe)</li>
+                    <li><strong>Position auto-ajustée :</strong> La position s'ajuste pour maintenir l'ancrage correct</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>🎯 Comportement selon l'ancrage</h3>
+                <ul>
+                    <li><strong>TopLeft :</strong> Resize depuis le coin haut-gauche fixe</li>
+                    <li><strong>Center :</strong> Resize depuis le centre (le plus intuitif)</li>
+                    <li><strong>BottomRight :</strong> Resize depuis le coin bas-droit fixe</li>
+                    <li><strong>Autres :</strong> Le point d'ancrage reste fixe pendant le resize</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Astuce :</strong> Utilisez l'ancrage Center pour la plupart des éléments, cela rend le redimensionnement plus intuitif.
+            </div>
+        </section>
+
+        <!-- Outliner -->
+        <section class="card">
+            <h2>🌳 Outliner (Hiérarchie)</h2>
+
+            <div class="type-item">
+                <h3>Affichage hiérarchique</h3>
+                <p>L'Outliner montre tous les éléments organisés en arbre parent-enfant.</p>
+                <ul>
+                    <li><strong>Indentation :</strong> Les enfants sont décalés à droite sous leur parent</li>
+                    <li><strong>Icônes :</strong> Différentes selon le type (Frame, Sprite, Button, Text)</li>
+                    <li><strong>Ordre :</strong> Trié par Z-order (ordre d'affichage)</li>
+                    <li><strong>Visibilité :</strong> Les éléments masqués sont affichés en grisé</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Actions disponibles</h3>
+                <ul>
+                    <li><strong>Clic :</strong> Sélectionner l'élément</li>
+                    <li><strong>Clic droit :</strong> Menu contextuel
+                        <ul>
+                            <li><strong>Toggle Visibility :</strong> Masquer/afficher l'élément</li>
+                        </ul>
+                    </li>
+                    <li><strong>Drag & Drop :</strong> Changer le parent d'un élément
+                        <ul>
+                            <li>Glissez un élément sur un autre pour le reparenter</li>
+                            <li>Le Z-order s'ajuste automatiquement</li>
+                            <li>Protection contre les boucles (cycle detection)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Organisation recommandée :</strong><br>
+                Gardez une hiérarchie claire et logique. Groupez les éléments liés (ex: tous les composants d'un bouton sous le Button parent).
+            </div>
+        </section>
+
+        <!-- Zoom et Pan -->
+        <section class="card">
+            <h2>🔍 Zoom et Pan</h2>
+
+            <div class="type-item">
+                <h3>Zoom</h3>
+                <ul>
+                    <li><strong>Molette haut :</strong> Zoom in (agrandir)</li>
+                    <li><strong>Molette bas :</strong> Zoom out (rétrécir)</li>
+                    <li><strong>Plage :</strong> 10% à 500%</li>
+                    <li><strong>Point focal :</strong> Le zoom se fait autour de la position du curseur</li>
+                    <li><strong>Indicateur :</strong> Le niveau de zoom est affiché en haut (ex: "Zoom: 150%")</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Pan (Déplacement de la vue)</h3>
+                <ul>
+                    <li><strong>Clic molette + Drag :</strong> Déplace la vue dans n'importe quelle direction</li>
+                    <li><strong>Utilisation :</strong> Explorer de grandes UI ou se concentrer sur une zone</li>
+                    <li><strong>Reset :</strong> Pas de raccourci direct, utilisez le zoom pour recentrer</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Workflow optimal :</strong> Zoomez pour travailler précisément sur les détails, puis dé-zoomez pour voir l'ensemble. Utilisez le pan pour naviguer rapidement entre zones.
+            </example>
+        </section>
+
+        <!-- Système de pages -->
+        <section class="card">
+            <h2>📄 Système de pages</h2>
+
+            <div class="type-item">
+                <h3>Pages multiples</h3>
+                <p>Créez des UI avec plusieurs pages/écrans navigables.</p>
+                <ul>
+                    <li><strong>Usage :</strong> Menus avec onglets, wizards, interfaces complexes</li>
+                    <li><strong>Gestion :</strong> Panneau "Pages" dans la colonne de droite</li>
+                    <li><strong>Navigation :</strong> Changez de page en cours d'édition avec les boutons de page</li>
+                    <li><strong>Indépendance :</strong> Chaque page a sa propre liste d'éléments</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Actions disponibles</h3>
+                <ul>
+                    <li><strong>Ajouter une page :</strong> Bouton "Ajouter page"</li>
+                    <li><strong>Supprimer une page :</strong> Bouton "Supprimer cette page"</li>
+                    <li><strong>Renommer une page :</strong> Champ "Nom de cette page"</li>
+                    <li><strong>Changer de page :</strong> Cliquez sur une page dans la liste</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>🔗 Navigation inter-pages</h3>
+                <p>Configurez des boutons pour naviguer entre pages :</p>
+                <ul>
+                    <li>Sélectionnez un Button</li>
+                    <li>Dans "Action du bouton", choisissez "Naviguer vers page"</li>
+                    <li>Sélectionnez la page cible dans le menu déroulant</li>
+                    <li>À l'export, le code de navigation est généré automatiquement</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Exemple d'usage :</strong> Menu principal (Page 1) avec "Jouer", "Options", "Quitter". Cliquer "Options" navigue vers Page 2 avec les paramètres, et un bouton "Retour" ramène à Page 1.
+            </div>
+        </section>
+
+        <!-- Save et Export -->
+        <section class="card">
+            <h2>💾 Sauvegarde et Export</h2>
+
+            <div class="type-item">
+                <h3>Sauvegarde de projet (.JSON)</h3>
+                <p>Sauvegarde l'état complet de votre projet pour reprendre l'édition plus tard.</p>
+                <ul>
+                    <li><strong>Format :</strong> Fichier JSON dans <code>garrysmod/data/eden_ui_editor/</code></li>
+                    <li><strong>Contenu :</strong> Tous les éléments, pages, propriétés, animations</li>
+                    <li><strong>Nom :</strong> Entrez le nom dans le champ et cliquez "Save"</li>
+                    <li><strong>Chargement :</strong> Entrez le nom et cliquez "Load"</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Export Lua (.lua)</h3>
+                <p>Génère le code Lua final prêt à être intégré dans votre addon.</p>
+                <ul>
+                    <li><strong>Génération automatique :</strong> Convertit tous les éléments en code EDEN UI</li>
+                    <li><strong>Optimisations :</strong>
+                        <ul>
+                            <li>Z-order incrémental automatique</li>
+                            <li>Hiérarchie parent-enfant préservée</li>
+                            <li>Actions et animations incluses</li>
+                            <li>Support multi-pages avec navigation</li>
+                        </ul>
+                    </li>
+                    <li><strong>Emplacement :</strong> <code>garrysmod/data/eden_ui_editor/exports/</code></li>
+                    <li><strong>Fichiers :</strong> .lua (pour require) et .txt (pour copier-coller)</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>📋 Structure du code exporté</h3>
+                <ul>
+                    <li><strong>Fonction principale :</strong> <code>Create[NomProjet]()</code></li>
+                    <li><strong>Builder pattern :</strong> Utilise le système de builder EDEN UI</li>
+                    <li><strong>Pages :</strong> Si multi-pages, génère les fonctions de navigation</li>
+                    <li><strong>Actions :</strong> Callbacks pour les boutons</li>
+                    <li><strong>Concommand :</strong> Commande console pour ouvrir l'UI</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Workflow recommandé :</strong><br>
+                1. Créez votre UI dans l'éditeur<br>
+                2. Sauvegardez régulièrement (Save)<br>
+                3. Une fois terminé, exportez (Export Lua)<br>
+                4. Copiez le fichier .lua dans votre addon<br>
+                5. Require le fichier dans votre code
+            </div>
+        </section>
+
+        <!-- Undo/Redo -->
+        <section class="card">
+            <h2>↩️ Undo/Redo</h2>
+
+            <div class="type-item">
+                <h3>Système d'annulation</h3>
+                <ul>
+                    <li><strong>Ctrl + Z :</strong> Annuler la dernière action</li>
+                    <li><strong>Stack d'undo :</strong> Conserve un historique des modifications</li>
+                    <li><strong>Actions annulables :</strong>
+                        <ul>
+                            <li>Ajout/suppression d'éléments</li>
+                            <li>Modification de propriétés</li>
+                            <li>Déplacements et redimensionnements</li>
+                            <li>Changements de parent</li>
+                            <li>Duplication</li>
+                        </ul>
+                    </li>
+                    <li><strong>Limitation :</strong> Pas de Redo (Ctrl+Y) pour le moment</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Astuce :</strong> N'hésitez pas à expérimenter ! Le système d'undo vous permet de revenir en arrière facilement si quelque chose ne va pas.
+            </div>
+        </section>
+
+        <!-- Material Picker -->
+        <section class="card">
+            <h2>🖼️ Material Picker</h2>
+
+            <div class="type-item">
+                <h3>Explorateur de matériaux</h3>
+                <p>Interface dédiée pour choisir des images/matériaux.</p>
+                <ul>
+                    <li><strong>Ouverture :</strong> Bouton "📁" à côté des champs de matériau</li>
+                    <li><strong>Panneau gauche :</strong> Arborescence des dossiers</li>
+                    <li><strong>Panneau droit :</strong> Grille de miniatures avec prévisualisation</li>
+                    <li><strong>Recherche :</strong> Champ de filtrage en temps réel</li>
+                    <li><strong>Sélection :</strong> Cliquez sur une miniature pour choisir</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><strong>Dossier racine :</strong> Configuré par défaut sur votre dossier UI principal</li>
+                    <li><strong>Dossiers imbriqués :</strong> Navigation dans la hiérarchie complète</li>
+                    <li><strong>"Tous les matériaux" :</strong> Nœud racine montrant tous les fichiers</li>
+                    <li><strong>Filtrage par dossier :</strong> Cliquez sur un dossier pour voir uniquement son contenu</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Organisation recommandée :</strong> Structurez vos matériaux par type dans des sous-dossiers (backgrounds/, buttons/, icons/, fonts/) pour faciliter la recherche.
+            </div>
+        </section>
+
+        <footer>
+            <p>EDEN UI EDITOR Documentation - 2026</p>
+        </footer>
+    </main>
+</body>
+</html>

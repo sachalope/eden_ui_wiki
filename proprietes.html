@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriétés - EDEN UI EDITOR</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="EDEN UI Logo" class="logo-image">
+            <h1>EDEN UI</h1>
+            <p>Editor Documentation</p>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="animations.html">Animations</a></li>
+            <li><a href="composants.html">Composants</a></li>
+            <li><a href="proprietes.html" class="active">Propriétés</a></li>
+            <li><a href="editeur.html">Éditeur</a></li>
+            <li><a href="actions.html">Actions</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <header>
+            <h1>⚙️ Propriétés</h1>
+            <p class="subtitle">Configuration détaillée des éléments</p>
+        </header>
+
+        <!-- Position et Taille -->
+        <section class="card">
+            <h2>📐 Position et Taille</h2>
+
+            <div class="type-item">
+                <h3>X, Y - Position</h3>
+                <p>Coordonnées de positionnement de l'élément.</p>
+                <ul>
+                    <li><strong>Frame :</strong> Position absolue à l'écran (résolution de référence : 1920×1080)</li>
+                    <li><strong>Autres éléments :</strong> Position relative au parent</li>
+                    <li><strong>Unité :</strong> Pixels</li>
+                    <li><strong>Référence :</strong> Dépend du point d'ancrage (Anchor)</li>
+                </ul>
+                <div class="example">
+                    <strong>Exemple :</strong> Si X=100, Y=50 avec anchor TopLeft, l'élément sera à 100px de la gauche et 50px du haut du parent.
+                </div>
+            </div>
+
+            <div class="type-item">
+                <h3>W, H - Taille</h3>
+                <p>Dimensions de l'élément.</p>
+                <ul>
+                    <li><strong>W (Width) :</strong> Largeur en pixels</li>
+                    <li><strong>H (Height) :</strong> Hauteur en pixels</li>
+                    <li><strong>Redimensionnement :</strong> Utiliser les poignées de l'éditeur ou entrer les valeurs manuellement</li>
+                </ul>
+                <div class="example">
+                    <strong>Astuce :</strong> Maintenez Alt pendant le redimensionnement pour mettre à l'échelle depuis le centre.
+                </div>
+            </div>
+        </section>
+
+        <!-- Ancrage -->
+        <section class="card">
+            <h2>⚓ Anchor (Point d'ancrage)</h2>
+            <p>Détermine le point de référence pour la position de l'élément par rapport à son parent.</p>
+
+            <div class="preset-grid">
+                <div class="preset-item">
+                    <h3>TopLeft</h3>
+                    <p>Coin supérieur gauche</p>
+                    <p class="detail">X=0, Y=0 place l'élément au coin supérieur gauche du parent</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>Top</h3>
+                    <p>Centre du bord supérieur</p>
+                    <p class="detail">X=largeur/2, Y=0</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>TopRight</h3>
+                    <p>Coin supérieur droit</p>
+                    <p class="detail">X=largeur, Y=0</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>Left</h3>
+                    <p>Centre du bord gauche</p>
+                    <p class="detail">X=0, Y=hauteur/2</p>
+                </div>
+
+                <div class="preset-item highlight">
+                    <h3>Center ⭐</h3>
+                    <p>Centre de l'élément</p>
+                    <p class="detail">Le plus utilisé pour centrage facile</p>
+                    <p class="usage">X=largeur/2, Y=hauteur/2</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>Right</h3>
+                    <p>Centre du bord droit</p>
+                    <p class="detail">X=largeur, Y=hauteur/2</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>BottomLeft</h3>
+                    <p>Coin inférieur gauche</p>
+                    <p class="detail">X=0, Y=hauteur</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>Bottom</h3>
+                    <p>Centre du bord inférieur</p>
+                    <p class="detail">X=largeur/2, Y=hauteur</p>
+                </div>
+
+                <div class="preset-item">
+                    <h3>BottomRight</h3>
+                    <p>Coin inférieur droit</p>
+                    <p class="detail">X=largeur, Y=hauteur</p>
+                </div>
+            </div>
+
+            <div class="example">
+                <strong>Exemple pratique :</strong> Pour centrer un bouton dans une Frame de 900×500 pixels :<br>
+                - Anchor = Center<br>
+                - X = 450 (moitié de 900)<br>
+                - Y = 250 (moitié de 500)<br>
+                Le centre du bouton sera exactement au centre de la Frame.
+            </div>
+        </section>
+
+        <!-- Z-Order -->
+        <section class="card">
+            <h2>📊 Z-Order</h2>
+            <p>Définit la profondeur d'affichage (quel élément apparaît devant/derrière).</p>
+
+            <div class="type-item">
+                <h3>Fonctionnement</h3>
+                <ul>
+                    <li><strong>Valeur :</strong> Nombre entier (0, 1, 2, 3...)</li>
+                    <li><strong>Plus élevé = Plus devant :</strong> Z=10 sera dessiné au-dessus de Z=5</li>
+                    <li><strong>Même Z :</strong> L'ordre dépend de l'ordre de création</li>
+                    <li><strong>Parent-Enfant :</strong> Les enfants ajustent automatiquement leur Z pour être au-dessus du parent</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>📋 Convention recommandée</h3>
+                <ul>
+                    <li><strong>Z = 0 :</strong> Frame principale</li>
+                    <li><strong>Z = 1-5 :</strong> Backgrounds, images de fond</li>
+                    <li><strong>Z = 10-20 :</strong> Boutons, éléments interactifs</li>
+                    <li><strong>Z = 20-30 :</strong> Texte, labels</li>
+                    <li><strong>Z = 50+ :</strong> Popups, tooltips, éléments overlay</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Astuce :</strong> Laissez de l'espace entre les valeurs Z (ex: 10, 20, 30) pour pouvoir insérer facilement de nouveaux éléments entre deux existants.
+            </div>
+        </section>
+
+        <!-- Couleur et Transparence -->
+        <section class="card">
+            <h2>🎨 Couleur et Transparence</h2>
+
+            <div class="type-item">
+                <h3>Color / Tint</h3>
+                <p>Couleur appliquée à l'élément (RGB + Alpha).</p>
+                <ul>
+                    <li><strong>R, G, B :</strong> Composantes rouge, vert, bleu (0-255)</li>
+                    <li><strong>Alpha :</strong> Transparence (0 = invisible, 255 = opaque)</li>
+                    <li><strong>Sprite/Button :</strong> La couleur teinte l'image (blanc = couleurs originales)</li>
+                    <li><strong>Text :</strong> Couleur du texte</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>💡 Utilisation de la teinte</h3>
+                <ul>
+                    <li><strong>Blanc (255,255,255) :</strong> Affiche l'image dans ses couleurs d'origine</li>
+                    <li><strong>Gris (128,128,128) :</strong> Assombrit l'image de moitié</li>
+                    <li><strong>Rouge (255,0,0) :</strong> Ne conserve que les teintes rouges</li>
+                    <li><strong>Alpha réduit :</strong> Rend l'élément semi-transparent</li>
+                </ul>
+                <div class="example">
+                    <strong>Astuce :</strong> Pour un effet "disabled", utilisez Color(128,128,128,180) pour un gris semi-transparent.
+                </div>
+            </div>
+        </section>
+
+        <!-- Transformations -->
+        <section class="card">
+            <h2>🔄 Transformations</h2>
+
+            <div class="type-item">
+                <h3>Rotation</h3>
+                <p>Fait pivoter l'élément autour de son centre.</p>
+                <ul>
+                    <li><strong>Unité :</strong> Degrés</li>
+                    <li><strong>Valeurs positives :</strong> Rotation dans le sens horaire</li>
+                    <li><strong>Valeurs négatives :</strong> Rotation dans le sens anti-horaire</li>
+                    <li><strong>Exemple :</strong> 45 = rotation de 45°, -90 = rotation de 90° à gauche</li>
+                </ul>
+                <div class="example">
+                    <strong>Utilisation :</strong> Parfait pour les flèches, indicateurs directionnels, effets de rotation animés.
+                </div>
+            </div>
+
+            <div class="type-item">
+                <h3>Scale (Échelle)</h3>
+                <p>Change la taille de l'élément par un facteur multiplicateur.</p>
+                <ul>
+                    <li><strong>Valeur :</strong> Multiplicateur (décimal)</li>
+                    <li><strong>1.0 :</strong> Taille normale (100%)</li>
+                    <li><strong>0.5 :</strong> Moitié de la taille (50%)</li>
+                    <li><strong>2.0 :</strong> Double taille (200%)</li>
+                    <li><strong>Centre :</strong> L'échelle se fait depuis le centre de l'élément</li>
+                </ul>
+                <div class="example">
+                    <strong>Astuce :</strong> Combinez avec des animations Scale pour des effets "pop" ou "pulse".
+                </div>
+            </div>
+
+            <div class="composition-section">
+                <h3>🔗 Cumul des transformations</h3>
+                <p>Les transformations se cumulent dans la hiérarchie parent-enfant :</p>
+                <ul>
+                    <li><strong>Rotation :</strong> Parent 45° + Enfant 30° = Enfant affiché à 75°</li>
+                    <li><strong>Scale :</strong> Parent 0.5× + Enfant 2× = Enfant affiché à 1× (taille normale)</li>
+                    <li><strong>Alpha :</strong> Parent 50% + Enfant 50% = Enfant affiché à 25%</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ID et Parent -->
+        <section class="card">
+            <h2>🏷️ ID et Parent</h2>
+
+            <div class="type-item">
+                <h3>ID (Identifiant)</h3>
+                <p>Nom unique pour identifier et référencer l'élément.</p>
+                <ul>
+                    <li><strong>Règles :</strong> Uniquement lettres (a-z, A-Z), chiffres (0-9), et underscore (_)</li>
+                    <li><strong>Unique :</strong> Pas de doublons dans la même UI</li>
+                    <li><strong>Conventions :</strong>
+                        <ul>
+                            <li>Sprites : "Logo", "Background", "Icon_*"</li>
+                            <li>Buttons : "Btn_*" (ex: Btn_Play, Btn_Close)</li>
+                            <li>Text : "Label_*", "Title", "Txt_*"</li>
+                            <li>Frames : "Main", "Panel_*"</li>
+                        </ul>
+                    </li>
+                    <li><strong>Renommage :</strong> Possible via le panneau de propriétés (met à jour automatiquement les références)</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Parent</h3>
+                <p>Élément parent dans la hiérarchie.</p>
+                <ul>
+                    <li><strong>Frame :</strong> Pas de parent (élément racine)</li>
+                    <li><strong>Autres :</strong> Doivent avoir un parent (Frame, Sprite ou Button)</li>
+                    <li><strong>Changement :</strong> Drag & drop dans l'Outliner ou sélection dans propriétés</li>
+                    <li><strong>Protection :</strong> Impossible de créer des boucles (A parent de B parent de A)</li>
+                </ul>
+                <div class="example">
+                    <strong>Important :</strong> Changer le parent déplace l'élément dans l'espace absolu tout en gardant sa position visuelle.
+                </div>
+            </div>
+        </section>
+
+        <!-- Matériaux -->
+        <section class="card">
+            <h2>🖼️ Matériaux</h2>
+
+            <div class="type-item">
+                <h3>Chemin des matériaux</h3>
+                <p>Les matériaux sont référencés par leur chemin relatif au dossier <code>materials/</code>.</p>
+                <ul>
+                    <li><strong>Format :</strong> "dossier/sous-dossier/image.png"</li>
+                    <li><strong>Extensions :</strong> .png, .vmt (matériaux Source Engine)</li>
+                    <li><strong>Exemple :</strong> "shinobi_rising/ui/button_normal.png"</li>
+                    <li><strong>Pas de préfixe :</strong> Ne pas inclure "materials/" dans le chemin</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Material Picker</h3>
+                <p>L'éditeur inclut un explorateur de matériaux intégré.</p>
+                <ul>
+                    <li><strong>Navigation :</strong> Arborescence de dossiers à gauche</li>
+                    <li><strong>Prévisualisation :</strong> Miniatures des images</li>
+                    <li><strong>Recherche :</strong> Filtrage par nom</li>
+                    <li><strong>Organisation :</strong> Les dossiers sont automatiquement détectés</li>
+                </ul>
+                <div class="example">
+                    <strong>Astuce :</strong> Organisez vos matériaux par thème ou type (backgrounds/, buttons/, icons/, etc.) pour faciliter la navigation.
+                </div>
+            </div>
+        </section>
+
+        <!-- Visibilité -->
+        <section class="card">
+            <h2>👁️ Visibilité</h2>
+
+            <div class="type-item">
+                <h3>Hidden (Masqué)</h3>
+                <p>Permet de masquer temporairement un élément sans le supprimer.</p>
+                <ul>
+                    <li><strong>Usage :</strong> Clic droit sur l'élément dans l'Outliner → "Toggle Visibility"</li>
+                    <li><strong>Effet :</strong> L'élément et ses enfants ne sont plus visibles dans l'aperçu</li>
+                    <li><strong>Restauration :</strong> Même manipulation pour réafficher</li>
+                    <li><strong>Export :</strong> Les éléments masqués sont exportés (pour activation/désactivation dynamique en jeu)</li>
+                </ul>
+                <div class="example">
+                    <strong>Utilisation :</strong> Utile pour temporairement masquer des éléments pendant l'édition ou pour créer des états alternatifs.
+                </div>
+            </div>
+
+            <div class="type-item">
+                <h3>Clipping (Frame)</h3>
+                <p>Pour les Frames uniquement : masque les enfants qui débordent des limites.</p>
+                <ul>
+                    <li><strong>Activé :</strong> Les enfants en dehors des dimensions W×H sont coupés</li>
+                    <li><strong>Désactivé :</strong> Les enfants peuvent dépasser librement</li>
+                    <li><strong>Usage :</strong> Créer des zones de scroll, limiter l'affichage</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>EDEN UI EDITOR Documentation - 2026</p>
+        </footer>
+    </main>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Composants - EDEN UI EDITOR</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="EDEN UI Logo" class="logo-image">
+            <h1>EDEN UI</h1>
+            <p>Editor Documentation</p>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="animations.html">Animations</a></li>
+            <li><a href="composants.html" class="active">Composants</a></li>
+            <li><a href="proprietes.html">Propriétés</a></li>
+            <li><a href="editeur.html">Éditeur</a></li>
+            <li><a href="actions.html">Actions</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <header>
+            <h1>🧩 Composants</h1>
+            <p class="subtitle">Types d'éléments disponibles dans EDEN UI</p>
+        </header>
+
+        <!-- Frame -->
+        <section class="card">
+            <h2>📐 Frame</h2>
+            <p>Le conteneur principal de l'interface. Tous les autres éléments doivent être enfants d'une Frame.</p>
+
+            <div class="type-item">
+                <h3>Caractéristiques</h3>
+                <ul>
+                    <li><strong>Rôle :</strong> Conteneur racine de l'UI</li>
+                    <li><strong>Position :</strong> Coordonnées absolues à l'écran (basées sur résolution 1920×1080)</li>
+                    <li><strong>Clipping :</strong> Option pour masquer les enfants qui débordent</li>
+                    <li><strong>Z-order :</strong> Généralement Z = 0</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Propriétés configurables</h3>
+                <ul>
+                    <li><strong>ID :</strong> Identifiant unique (ex: "Main", "MenuPanel")</li>
+                    <li><strong>Position :</strong> X, Y</li>
+                    <li><strong>Taille :</strong> W (largeur), H (hauteur)</li>
+                    <li><strong>Anchor :</strong> Point d'ancrage (TopLeft, Center, etc.)</li>
+                    <li><strong>Clip :</strong> Activer le clipping des enfants</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Utilisation :</strong> La Frame est automatiquement créée comme élément de base. Elle sert de référentiel pour tous les éléments enfants.
+            </div>
+        </section>
+
+        <!-- Sprite -->
+        <section class="card">
+            <h2>🖼️ Sprite</h2>
+            <p>Affiche une image ou un matériau. Idéal pour les backgrounds, icônes, logos, et décorations.</p>
+
+            <div class="type-item">
+                <h3>Caractéristiques</h3>
+                <ul>
+                    <li><strong>Rôle :</strong> Affichage d'images statiques ou animées</li>
+                    <li><strong>Format supporté :</strong> PNG, VMT (matériaux Source Engine)</li>
+                    <li><strong>Peut être parent :</strong> Oui, les autres éléments peuvent être enfants d'un Sprite</li>
+                    <li><strong>Rotation & Scale :</strong> Supporte les transformations</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Propriétés configurables</h3>
+                <ul>
+                    <li><strong>ID :</strong> Identifiant unique (ex: "Logo", "Background", "Icon_Weapon")</li>
+                    <li><strong>Parent :</strong> ID de l'élément parent (Frame, Sprite ou Button)</li>
+                    <li><strong>Position :</strong> X, Y (relatives au parent)</li>
+                    <li><strong>Taille :</strong> W, H</li>
+                    <li><strong>Anchor :</strong> Point d'ancrage</li>
+                    <li><strong>Z-order :</strong> Ordre d'affichage (plus élevé = devant)</li>
+                    <li><strong>Matériau :</strong> Chemin vers l'image (ex: "shinobi_rising/ui/logo.png")</li>
+                    <li><strong>Couleur :</strong> Teinte RGB + Alpha (transparence)</li>
+                    <li><strong>Rotation :</strong> Angle en degrés</li>
+                    <li><strong>Scale :</strong> Échelle (1 = 100%, 0.5 = 50%, 2 = 200%)</li>
+                    <li><strong>Animations :</strong> Supporte tous les types d'animations</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>💡 Cas d'usage</h3>
+                <ul>
+                    <li><strong>Backgrounds :</strong> Images de fond pour les menus</li>
+                    <li><strong>Logos :</strong> Branding et identité visuelle</li>
+                    <li><strong>Icônes :</strong> Symboles et pictogrammes</li>
+                    <li><strong>Décorations :</strong> Bordures, ornements, effets visuels</li>
+                    <li><strong>Indicateurs :</strong> Barres de vie, jauges, etc.</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Astuce :</strong> Utilisez le Material Picker intégré pour naviguer facilement dans vos dossiers de matériaux et prévisualiser les images.
+            </div>
+        </section>
+
+        <!-- Button -->
+        <section class="card">
+            <h2>🔘 Button</h2>
+            <p>Bouton interactif avec états visuels (normal, hover, pressed, disabled) et actions configurables.</p>
+
+            <div class="type-item">
+                <h3>Caractéristiques</h3>
+                <ul>
+                    <li><strong>Rôle :</strong> Élément interactif cliquable</li>
+                    <li><strong>États visuels :</strong> Normal, Hover (survol), Pressed (cliqué), Disabled (désactivé)</li>
+                    <li><strong>Peut être parent :</strong> Oui, parfait pour y placer des Sprites ou du Texte</li>
+                    <li><strong>Actions :</strong> Configurable (fermer menu, navigation, code custom)</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Propriétés configurables</h3>
+                <ul>
+                    <li><strong>ID :</strong> Identifiant unique (ex: "Btn_Play", "Btn_Close", "Btn_Settings")</li>
+                    <li><strong>Parent :</strong> ID de l'élément parent</li>
+                    <li><strong>Position :</strong> X, Y</li>
+                    <li><strong>Taille :</strong> W, H</li>
+                    <li><strong>Anchor :</strong> Point d'ancrage</li>
+                    <li><strong>Z-order :</strong> Ordre d'affichage</li>
+                    <li><strong>Matériaux :</strong> Un ou plusieurs sprites selon le type d'effet hover</li>
+                    <li><strong>Couleur/Teinte :</strong> RGB + Alpha</li>
+                    <li><strong>Rotation & Scale :</strong> Transformations</li>
+                    <li><strong>Effet Hover :</strong> Type d'effet au survol (voir ci-dessous)</li>
+                    <li><strong>Action :</strong> Comportement au clic (voir section Actions)</li>
+                    <li><strong>Animations :</strong> Supporte tous les types d'animations</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>🎨 Types d'effets Hover</h3>
+                
+                <div class="preset-item">
+                    <h4>1. Alpha & Brightness (Recommandé)</h4>
+                    <p><strong>Mode :</strong> Un seul sprite, modulation de luminosité et transparence</p>
+                    <ul>
+                        <li><strong>Normal :</strong> 100% (multiplicateur = 1.0)</li>
+                        <li><strong>Hover :</strong> Légèrement assombri (ex: 90%, multiplicateur = 0.9)</li>
+                        <li><strong>Pressed :</strong> Plus assombri (ex: 78%, multiplicateur = 0.78)</li>
+                        <li><strong>Disabled :</strong> Très assombri (50%, multiplicateur = 0.5)</li>
+                    </ul>
+                    <p class="detail"><strong>Avantage :</strong> Simple, performant, un seul fichier image requis</p>
+                </div>
+
+                <div class="preset-item">
+                    <h4>2. Different Sprite</h4>
+                    <p><strong>Mode :</strong> Sprites différents pour chaque état</p>
+                    <ul>
+                        <li><strong>Normal :</strong> Sprite par défaut</li>
+                        <li><strong>Hover :</strong> Sprite alternatif au survol</li>
+                        <li><strong>Pressed :</strong> Sprite alternatif au clic</li>
+                        <li><strong>Disabled :</strong> Sprite alternatif désactivé (optionnel)</li>
+                    </ul>
+                    <p class="detail"><strong>Avantage :</strong> Contrôle total sur l'apparence de chaque état</p>
+                </div>
+
+                <div class="preset-item">
+                    <h4>3. None</h4>
+                    <p><strong>Mode :</strong> Aucun effet hover, le sprite reste identique</p>
+                    <p class="detail"><strong>Utilisation :</strong> Pour les boutons invisibles ou avec animations custom</p>
+                </div>
+            </div>
+
+            <div class="composition-section">
+                <h3>⚡ Actions des boutons</h3>
+                <ul>
+                    <li><strong>Aucune :</strong> Le bouton ne fait rien (utile pour prototypage)</li>
+                    <li><strong>Fermer le menu :</strong> Ferme l'interface UI complète</li>
+                    <li><strong>Naviguer vers page :</strong> Change de page dans un système multi-pages</li>
+                    <li><strong>Code custom :</strong> Exécute du code Lua personnalisé</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Bonne pratique :</strong> Placez des éléments Text ou Sprite en tant qu'enfants du Button pour créer des boutons avec texte ou icônes. Les enfants suivront automatiquement les états hover du parent.
+            </div>
+        </section>
+
+        <!-- Text -->
+        <section class="card">
+            <h2>📝 Text</h2>
+            <p>Affiche du texte avec police, taille, et style configurables. Supporte l'alignement et l'outline.</p>
+
+            <div class="type-item">
+                <h3>Caractéristiques</h3>
+                <ul>
+                    <li><strong>Rôle :</strong> Affichage de texte stylisé</li>
+                    <li><strong>Polices :</strong> Toutes les Google Fonts disponibles</li>
+                    <li><strong>Outline :</strong> Contour noir pour améliorer la lisibilité</li>
+                    <li><strong>Alignement :</strong> Horizontal (left, center, right) et Vertical (top, center, bottom)</li>
+                    <li><strong>Inherit Hover :</strong> Peut hériter des états hover d'un bouton parent</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Propriétés configurables</h3>
+                <ul>
+                    <li><strong>ID :</strong> Identifiant unique (ex: "Title", "Label_Score", "Txt_PlayerName")</li>
+                    <li><strong>Parent :</strong> ID de l'élément parent</li>
+                    <li><strong>Position :</strong> X, Y</li>
+                    <li><strong>Taille :</strong> W (largeur de la zone), H (hauteur de la zone)</li>
+                    <li><strong>Anchor :</strong> Point d'ancrage</li>
+                    <li><strong>Z-order :</strong> Ordre d'affichage</li>
+                    <li><strong>Texte :</strong> Contenu à afficher</li>
+                    <li><strong>Police (Font) :</strong> Nom de la police (ex: "Reggae One", "Roboto")</li>
+                    <li><strong>Taille (Size) :</strong> Taille de la police en pixels (ex: 24, 36, 48)</li>
+                    <li><strong>Poids (Weight) :</strong> Épaisseur (400 = normal, 600 = semi-bold, 700 = bold)</li>
+                    <li><strong>Outline :</strong> Activer le contour noir</li>
+                    <li><strong>Alignement X :</strong> left, center, right</li>
+                    <li><strong>Alignement Y :</strong> top, center, bottom</li>
+                    <li><strong>Couleur :</strong> RGB + Alpha</li>
+                    <li><strong>Inherit Hover :</strong> Hériter des états du bouton parent</li>
+                    <li><strong>Couleur Hover :</strong> Couleur au survol (si inherit hover activé)</li>
+                    <li><strong>Couleur Pressed :</strong> Couleur au clic (si inherit hover activé)</li>
+                    <li><strong>Animations :</strong> Supporte tous les types d'animations</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>💡 Inherit Hover (Héritage d'état)</h3>
+                <p>Lorsque <strong>Inherit Hover</strong> est activé et que le texte est enfant d'un Button :</p>
+                <ul>
+                    <li>Le texte change de couleur quand le bouton est survolé (hover)</li>
+                    <li>Le texte change de couleur quand le bouton est cliqué (pressed)</li>
+                    <li>Vous pouvez définir des couleurs différentes pour chaque état</li>
+                    <li>Parfait pour créer des labels de boutons réactifs</li>
+                </ul>
+                <div class="example">
+                    <strong>Exemple :</strong> Un bouton "JOUER" avec texte blanc qui devient jaune au survol et orange au clic.
+                </div>
+            </div>
+
+            <div class="composition-section">
+                <h3>🎨 Polices recommandées</h3>
+                <ul>
+                    <li><strong>Reggae One :</strong> Police par défaut, style moderne et lisible</li>
+                    <li><strong>Roboto :</strong> Clean et professionnel</li>
+                    <li><strong>Montserrat :</strong> Élégant et moderne</li>
+                    <li><strong>Poppins :</strong> Arrondi et amical</li>
+                    <li><strong>Open Sans :</strong> Très lisible, usage général</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Astuce :</strong> Utilisez Outline pour le texte sur des backgrounds complexes afin d'améliorer la lisibilité.
+            </div>
+        </section>
+
+        <!-- Hiérarchie -->
+        <section class="card">
+            <h2>👨‍👩‍👧 Hiérarchie Parent-Enfant</h2>
+            <p>Les éléments peuvent être organisés en hiérarchie pour créer des structures complexes.</p>
+
+            <div class="composition-section">
+                <h3>📋 Règles de parentage</h3>
+                <ul>
+                    <li><strong>Frame :</strong> Peut être parent de Sprite, Button, Text</li>
+                    <li><strong>Sprite :</strong> Peut être parent de Sprite, Button, Text</li>
+                    <li><strong>Button :</strong> Peut être parent de Sprite, Button, Text</li>
+                    <li><strong>Text :</strong> Ne peut PAS être parent d'autres éléments</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>🔄 Comportements hérités</h3>
+                <ul>
+                    <li><strong>Position :</strong> Les enfants sont positionnés relativement au parent</li>
+                    <li><strong>Transformations :</strong> Rotation, scale et alpha du parent affectent les enfants</li>
+                    <li><strong>Animations :</strong> Les animations du parent se propagent aux enfants</li>
+                    <li><strong>Z-order :</strong> Les enfants sont automatiquement au-dessus du parent</li>
+                    <li><strong>Visibilité :</strong> Masquer le parent masque tous ses enfants</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Exemple typique :</strong><br>
+                Frame (Main)<br>
+                ├── Sprite (Background)<br>
+                ├── Button (Btn_Play)<br>
+                │   ├── Sprite (Icon_Play)<br>
+                │   └── Text (Label_Play) <em>[avec Inherit Hover]</em><br>
+                └── Text (Title)
+            </div>
+        </section>
+
+        <!-- Ordre d'affichage -->
+        <section class="card">
+            <h2>📊 Z-Order (Ordre d'affichage)</h2>
+            <p>Le Z-order détermine quel élément apparaît devant ou derrière les autres.</p>
+
+            <div class="type-item">
+                <h3>Règles du Z-Order</h3>
+                <ul>
+                    <li><strong>Valeur plus élevée = Plus devant :</strong> Z=10 sera devant Z=5</li>
+                    <li><strong>Frame :</strong> Généralement Z = 0</li>
+                    <li><strong>Backgrounds :</strong> Z = 1-5 (arrière-plan)</li>
+                    <li><strong>Boutons :</strong> Z = 10-20 (milieu)</li>
+                    <li><strong>Texte/UI :</strong> Z = 20-30 (avant-plan)</li>
+                    <li><strong>Popups/Modals :</strong> Z = 50+ (tout devant)</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Important :</strong> Les enfants ajustent automatiquement leur Z pour être au-dessus de leur parent. Vous pouvez forcer un ordre spécifique en modifiant manuellement le Z.
+            </div>
+        </section>
+
+        <footer>
+            <p>EDEN UI EDITOR Documentation - 2026</p>
+        </footer>
+    </main>
+</body>
+</html>

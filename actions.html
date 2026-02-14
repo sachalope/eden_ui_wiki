@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actions - EDEN UI EDITOR</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="EDEN UI Logo" class="logo-image">
+            <h1>EDEN UI</h1>
+            <p>Editor Documentation</p>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="animations.html">Animations</a></li>
+            <li><a href="composants.html">Composants</a></li>
+            <li><a href="proprietes.html">Propriétés</a></li>
+            <li><a href="editeur.html">Éditeur</a></li>
+            <li><a href="actions.html" class="active">Actions</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <header>
+            <h1>⚡ Actions et Événements</h1>
+            <p class="subtitle">Configuration des interactions des boutons</p>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro">
+            <p>Les boutons peuvent déclencher des actions au clic. EDEN UI propose plusieurs types d'actions prédéfinies et la possibilité d'écrire du code custom.</p>
+        </section>
+
+        <!-- Types d'actions -->
+        <section class="card">
+            <h2>📋 Types d'actions disponibles</h2>
+
+            <div class="preset-item">
+                <h3>1. Aucune</h3>
+                <div class="preset-details">
+                    <span class="badge badge-type">Action par défaut</span>
+                </div>
+                <p><strong>Comportement :</strong> Le bouton ne fait rien au clic</p>
+                <ul>
+                    <li><strong>Utilisation :</strong> Prototypage, boutons désactivés, ou boutons purement décoratifs</li>
+                    <li><strong>Code exporté :</strong> Aucun callback généré</li>
+                </ul>
+                <div class="example">
+                    <strong>Cas d'usage :</strong> Pendant le design initial, pour tester l'apparence avant d'implémenter les actions.
+                </div>
+            </div>
+
+            <div class="preset-item">
+                <h3>2. Fermer le menu</h3>
+                <div class="preset-details">
+                    <span class="badge badge-type">Fermeture UI</span>
+                </div>
+                <p><strong>Comportement :</strong> Ferme complètement l'interface UI</p>
+                <ul>
+                    <li><strong>Utilisation :</strong> Boutons de sortie, "Retour", "Annuler", "Fermer"</li>
+                    <li><strong>Effet :</strong> Appelle la méthode <code>u:Close()</code></li>
+                    <li><strong>Propagation :</strong> Ferme toute l'UI, pas seulement un panel</li>
+                </ul>
+                <div class="example">
+                    <strong>Code exporté :</strong><br>
+                    <pre>b:On("Btn_Close", function(u) u:Close() end)</pre>
+                </div>
+            </div>
+
+            <div class="preset-item">
+                <h3>3. Naviguer vers page</h3>
+                <div class="preset-details">
+                    <span class="badge badge-type">Navigation multi-pages</span>
+                </div>
+                <p><strong>Comportement :</strong> Change de page dans un système multi-pages</p>
+                <ul>
+                    <li><strong>Utilisation :</strong> Onglets, menus avec sous-menus, wizards</li>
+                    <li><strong>Configuration :</strong> Sélectionnez la page cible dans le menu déroulant</li>
+                    <li><strong>Effet :</strong> Masque la page actuelle et affiche la page cible</li>
+                </ul>
+                <div class="composition-section">
+                    <h4>Configuration</h4>
+                    <ol>
+                        <li>Créez plusieurs pages dans le panneau "Pages"</li>
+                        <li>Sélectionnez un bouton</li>
+                        <li>Dans "Action du bouton", choisissez "Naviguer vers page"</li>
+                        <li>Dans "Page cible", sélectionnez la page de destination</li>
+                    </ol>
+                </div>
+                <div class="example">
+                    <strong>Code exporté :</strong><br>
+                    <pre>b:On("Btn_Options", function(u) ShowPage(2) end)</pre>
+                    <p class="detail">La fonction ShowPage() gère automatiquement le masquage/affichage des éléments</p>
+                </div>
+            </div>
+
+            <div class="preset-item">
+                <h3>4. Code custom</h3>
+                <div class="preset-details">
+                    <span class="badge badge-type">Personnalisé</span>
+                </div>
+                <p><strong>Comportement :</strong> Exécute du code Lua personnalisé</p>
+                <ul>
+                    <li><strong>Utilisation :</strong> Actions spécifiques à votre gamemode/addon</li>
+                    <li><strong>Configuration :</strong> Entrez votre code dans le champ "Code custom"</li>
+                    <li><strong>Variable disponible :</strong> <code>u</code> = instance de l'UI (pour accès aux éléments)</li>
+                </ul>
+                <div class="composition-section">
+                    <h4>Exemples de code</h4>
+                    <pre>-- Exemple 1: Afficher un message
+chat.AddText(Color(100, 200, 100), "Bouton cliqué !")
+
+-- Exemple 2: Exécuter une commande
+RunConsoleCommand("say", "Hello World")
+
+-- Exemple 3: Netmessage au serveur
+net.Start("MonMessage")
+net.WriteString("action_demo")
+net.SendToServer()
+
+-- Exemple 4: Appeler une fonction custom
+MaFonctionPerso()
+
+-- Exemple 5: Accéder à un élément de l'UI
+local myElement = u:GetElement("MonElementID")
+if myElement then
+    myElement:SetVisible(false)
+end
+
+-- Exemple 6: Fermer et ouvrir une autre UI
+u:Close()
+EDEN_UI.Menus.AutreMenu()</pre>
+                </div>
+                <div class="example">
+                    <strong>Code exporté :</strong><br>
+                    <pre>b:On("Btn_Custom", function(u) --[[ Votre code ici ]] end)</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Événements de boutons -->
+        <section class="card">
+            <h2>🖱️ Événements de boutons</h2>
+
+            <div class="type-item">
+                <h3>États du bouton</h3>
+                <p>Les boutons réagissent automatiquement aux interactions :</p>
+                <ul>
+                    <li><strong>Normal :</strong> État par défaut, aucune interaction</li>
+                    <li><strong>Hover (survol) :</strong> Le curseur est au-dessus du bouton</li>
+                    <li><strong>Pressed (cliqué) :</strong> Le bouton est enfoncé (clic maintenu)</li>
+                    <li><strong>Disabled (désactivé) :</strong> Le bouton ne peut pas être cliqué</li>
+                </ul>
+            </div>
+
+            <div class="type-item">
+                <h3>Callback OnClick</h3>
+                <p>L'action configurée est déclenchée au moment du clic (relâchement du bouton).</p>
+                <ul>
+                    <li><strong>Timing :</strong> Se déclenche sur <code>OnMouseReleased</code></li>
+                    <li><strong>Une seule action :</strong> Un bouton ne peut avoir qu'une action configurée</li>
+                    <li><strong>Extension :</strong> Vous pouvez ajouter plus de callbacks dans le code exporté</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Combinaison avec animations -->
+        <section class="card">
+            <h2>🎬 Combinaison Actions + Animations</h2>
+            <p>Les actions et animations fonctionnent ensemble pour créer des interactions riches.</p>
+
+            <div class="composition-section">
+                <h3>Exemples de combinaisons</h3>
+                
+                <div class="preset-item">
+                    <h4>Bouton avec feedback visuel</h4>
+                    <ul>
+                        <li><strong>Effet hover :</strong> "Alpha & Brightness" (assombrit au survol)</li>
+                        <li><strong>Animation :</strong> "Scale Pop" OnHover (agrandit légèrement)</li>
+                        <li><strong>Action :</strong> "Naviguer vers page" ou "Code custom"</li>
+                    </ul>
+                    <p class="detail"><strong>Résultat :</strong> Le bouton pulse et s'assombrit au survol, puis exécute l'action au clic</p>
+                </div>
+
+                <div class="preset-item">
+                    <h4>Bouton animé en continu</h4>
+                    <ul>
+                        <li><strong>Animation 1 :</strong> "Color Pulse" Loop (pulsation de couleur)</li>
+                        <li><strong>Animation 2 :</strong> "Rotate" Loop (rotation subtile)</li>
+                        <li><strong>Effet hover :</strong> "Different Sprite" (sprite alternatif au survol)</li>
+                        <li><strong>Action :</strong> "Code custom"</li>
+                    </ul>
+                    <p class="detail"><strong>Résultat :</strong> Bouton dynamique qui attire l'attention, avec feedback au survol et action au clic</p>
+                </div>
+
+                <div class="preset-item">
+                    <h4>Bouton de fermeture simple</h4>
+                    <ul>
+                        <li><strong>Animation :</strong> "Fade In" OnShow (apparition douce)</li>
+                        <li><strong>Effet hover :</strong> "Alpha & Brightness"</li>
+                        <li><strong>Action :</strong> "Fermer le menu"</li>
+                    </ul>
+                    <p class="detail"><strong>Résultat :</strong> Bouton discret qui apparaît en douceur et ferme proprement l'UI</p>
+                </div>
+            </div>
+
+            <div class="example">
+                <strong>Bonne pratique :</strong> Utilisez des animations subtiles (durée courte, ~0.15-0.25s) pour les interactions hover afin de maintenir une UI réactive.
+            </div>
+        </section>
+
+        <!-- Héritage d'état (Text) -->
+        <section class="card">
+            <h2>🔗 Inherit Hover (Texte sur boutons)</h2>
+            <p>Les éléments Text peuvent hériter des états interactifs de leur bouton parent.</p>
+
+            <div class="type-item">
+                <h3>Fonctionnement</h3>
+                <ul>
+                    <li><strong>Activation :</strong> Cochez "Inherit Hover" dans les propriétés du Text</li>
+                    <li><strong>Parent requis :</strong> Le Text doit être enfant d'un Button</li>
+                    <li><strong>États synchronisés :</strong>
+                        <ul>
+                            <li><strong>Normal :</strong> Couleur par défaut du texte</li>
+                            <li><strong>Hover :</strong> Couleur au survol (configurable)</li>
+                            <li><strong>Pressed :</strong> Couleur au clic (configurable)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>Configuration</h3>
+                <ol>
+                    <li>Créez un Button</li>
+                    <li>Ajoutez un Text en tant qu'enfant du Button</li>
+                    <li>Sélectionnez le Text</li>
+                    <li>Activez "Inherit Hover from Button Parent"</li>
+                    <li>Configurez les couleurs :
+                        <ul>
+                            <li><strong>Couleur normale :</strong> Couleur principale du texte</li>
+                            <li><strong>Couleur Hover :</strong> Couleur au survol du bouton (ex: blanc → jaune)</li>
+                            <li><strong>Couleur Pressed :</strong> Couleur au clic (ex: jaune → orange)</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="example">
+                <strong>Exemple typique :</strong><br>
+                Bouton "JOUER" :<br>
+                - Button avec sprite de fond et état hover<br>
+                - Text "JOUER" en blanc<br>
+                - Hover : texte devient jaune vif<br>
+                - Pressed : texte devient orange<br>
+                - Action : Code custom pour lancer le jeu
+            </div>
+        </section>
+
+        <!-- Export et intégration -->
+        <section class="card">
+            <h2>💻 Export et intégration du code</h2>
+
+            <div class="type-item">
+                <h3>Structure du code exporté</h3>
+                <p>Les actions sont exportées dans la section "Actions" du code Lua généré.</p>
+                <pre>-- Actions:
+b:On("Btn_Play", function(u) 
+    -- Code de l'action "Jouer"
+    MaFonctionDeDemarrage()
+end)
+
+b:On("Btn_Options", function(u) 
+    ShowPage(2) 
+end)
+
+b:On("Btn_Close", function(u) 
+    u:Close() 
+end)</pre>
+            </div>
+
+            <div class="type-item">
+                <h3>Variable 'u' (UI Instance)</h3>
+                <p>La variable <code>u</code> donne accès à l'instance de l'UI et ses méthodes.</p>
+                <ul>
+                    <li><strong>u:Close() :</strong> Ferme l'UI</li>
+                    <li><strong>u:GetElement(id) :</strong> Récupère un élément par son ID</li>
+                    <li><strong>u.frame :</strong> Accès au DFrame racine</li>
+                </ul>
+                <div class="composition-section">
+                    <h4>Exemples d'utilisation</h4>
+                    <pre>-- Masquer un élément
+b:On("Btn_Toggle", function(u)
+    local elem = u:GetElement("MonSprite")
+    if elem then
+        elem:SetVisible(not elem:IsVisible())
+    end
+end)
+
+-- Modifier un texte
+b:On("Btn_Update", function(u)
+    local text = u:GetElement("Label_Score")
+    if text then
+        text:SetText("Score: 1000")
+    end
+end)
+
+-- Accéder au frame pour manipulation avancée
+b:On("Btn_Advanced", function(u)
+    u.frame:SetPos(100, 100)
+    u.frame:SizeTo(1000, 600, 0.5, 0, -1)
+end)</pre>
+                </div>
+            </div>
+
+            <div class="type-item">
+                <h3>Extension du code</h3>
+                <p>Après export, vous pouvez enrichir le code avec plus de fonctionnalités.</p>
+                <ul>
+                    <li><strong>Ajouter des callbacks :</strong> Autres événements (Think, Paint, etc.)</li>
+                    <li><strong>Netmessages :</strong> Communication client-serveur</li>
+                    <li><strong>Hooks :</strong> Intégration avec d'autres systèmes</li>
+                    <li><strong>Timers :</strong> Actions différées ou répétées</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Workflow recommandé :</strong><br>
+                1. Configurez les actions de base dans l'éditeur<br>
+                2. Exportez le code Lua<br>
+                3. Intégrez dans votre addon<br>
+                4. Ajoutez les fonctionnalités avancées manuellement dans le code<br>
+                5. Testez en jeu
+            </div>
+        </section>
+
+        <!-- Bonnes pratiques -->
+        <section class="card">
+            <h2>✅ Bonnes pratiques</h2>
+
+            <div class="composition-section">
+                <h3>Actions</h3>
+                <ul>
+                    <li><strong>Nommage clair :</strong> Donnez des IDs descriptifs aux boutons (Btn_Play, Btn_Settings, Btn_Back)</li>
+                    <li><strong>Feedback visuel :</strong> Combinez toujours actions avec effets hover pour un feedback immédiat</li>
+                    <li><strong>Code simple dans l'éditeur :</strong> Gardez le code custom court, déléguez la logique complexe à des fonctions externes</li>
+                    <li><strong>Testez en jeu :</strong> L'éditeur ne peut pas simuler les actions, testez toujours en situation réelle</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>Navigation multi-pages</h3>
+                <ul>
+                    <li><strong>Page d'accueil :</strong> La Page 1 est toujours affichée en premier</li>
+                    <li><strong>Boutons de retour :</strong> Prévoyez toujours un moyen de revenir à la page précédente</li>
+                    <li><strong>Transitions :</strong> Utilisez des animations OnShow pour des transitions douces entre pages</li>
+                    <li><strong>Noms explicites :</strong> Renommez vos pages (ex: "Menu Principal", "Options", "Inventaire")</li>
+                </ul>
+            </div>
+
+            <div class="composition-section">
+                <h3>Performance</h3>
+                <ul>
+                    <li><strong>Évitez les boucles infinies :</strong> Dans le code custom, attention aux appels récursifs</li>
+                    <li><strong>Netmessages :</strong> Limitez la fréquence des envois au serveur</li>
+                    <li><strong>Animations + Actions :</strong> Les animations légères (0.15-0.3s) gardent l'UI réactive</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Exemples complets -->
+        <section class="card">
+            <h2>📚 Exemples complets</h2>
+
+            <div class="preset-item">
+                <h3>Menu principal simple</h3>
+                <pre>-- Page 1: Menu principal
+Frame: Main (900×500, centré)
+  ├─ Sprite: Background (background.png)
+  ├─ Text: Title ("MON JEU", centré, large)
+  ├─ Button: Btn_Play
+  │   ├─ Sprite: Icon_Play
+  │   ├─ Text: "JOUER" (inherit hover)
+  │   └─ Action: Code custom → StartGame()
+  ├─ Button: Btn_Options
+  │   ├─ Text: "OPTIONS" (inherit hover)
+  │   └─ Action: Naviguer vers page 2
+  └─ Button: Btn_Quit
+      ├─ Text: "QUITTER" (inherit hover)
+      └─ Action: Fermer le menu
+
+-- Page 2: Options
+Frame: Main (même que page 1)
+  ├─ Text: Title_Options ("OPTIONS")
+  ├─ [... contrôles d'options ...]
+  └─ Button: Btn_Back
+      ├─ Text: "RETOUR"
+      └─ Action: Naviguer vers page 1</pre>
+            </div>
+
+            <div class="preset-item">
+                <h3>Bouton avec animations riches</h3>
+                <pre>Button: Btn_Epic
+  - Matériau: button_glow.png
+  - Effet hover: Alpha & Brightness (0.9)
+  - Animation 1: Color Pulse (Loop, 0.8s)
+  - Animation 2: Scale Pop (OnHover, 0.15s)
+  - Animation 3: Fade In (OnShow, 0.25s)
+  - Enfants:
+      - Text: "COMMENCER" (inherit hover: blanc→jaune→orange)
+      - Sprite: Icon_Star (animation Rotate Loop)
+  - Action: Code custom → 
+      net.Start("StartMission")
+      net.WriteInt(mission_id, 16)
+      net.SendToServer()
+      u:Close()</pre>
+            </div>
+        </section>
+
+        <footer>
+            <p>EDEN UI EDITOR Documentation - 2026</p>
+        </footer>
+    </main>
+</body>
+</html>
